@@ -15,8 +15,8 @@ const Footer = () => {
     { name: 'Beranda', href: '/' },
     { name: 'Layanan', href: '/layanan' },
     { name: 'Kontak', href: '/kontak' },
-    { name: 'Karir', href: '#', onClick: () => alert('Halaman Karir sedang dalam pengembangan. Hubungi HR kami di +62 21 1234 5678 untuk informasi lowongan kerja.') },
-    { name: 'Berita', href: '#', onClick: () => alert('Halaman Berita sedang dalam pengembangan. Ikuti media sosial kami untuk update terbaru.') }
+    { name: 'Karir', href: '/karir' },
+    { name: 'Berita', href: '/berita' }
   ];
 
   const services = [
@@ -27,10 +27,6 @@ const Footer = () => {
     { name: 'Radiologi', href: '/layanan' },
     { name: 'Fisioterapi', href: '/layanan' }
   ];
-
-  const handlePolicyClick = (type: string) => {
-    alert(`Halaman ${type} sedang dalam pengembangan. Untuk informasi lebih lanjut, hubungi customer service kami di +62 21 1234 5678.`);
-  };
 
   return (
     <footer className="bg-gray-900 text-white relative overflow-hidden">
@@ -129,18 +125,9 @@ const Footer = () => {
             <ul className="space-y-2 text-sm">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  {link.onClick ? (
-                    <button 
-                      onClick={link.onClick}
-                      className="text-gray-300 hover:text-blue-400 transition-colors text-left"
-                    >
-                      {link.name}
-                    </button>
-                  ) : (
-                    <Link to={link.href} className="text-gray-300 hover:text-blue-400 transition-colors">
-                      {link.name}
-                    </Link>
-                  )}
+                  <Link to={link.href} className="text-gray-300 hover:text-blue-400 transition-colors">
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -153,24 +140,24 @@ const Footer = () => {
               © 2024 PT. Cipta Hospital Indonesia. Semua hak cipta dilindungi.
             </p>
             <div className="flex items-center space-x-6 text-sm text-gray-400">
-              <button 
-                onClick={() => handlePolicyClick('Kebijakan Privasi')}
+              <Link 
+                to="/kebijakan-privasi"
                 className="hover:text-blue-400 transition-colors"
               >
                 Kebijakan Privasi
-              </button>
-              <button 
-                onClick={() => handlePolicyClick('Syarat & Ketentuan')}
+              </Link>
+              <Link 
+                to="/syarat-ketentuan"
                 className="hover:text-blue-400 transition-colors"
               >
                 Syarat & Ketentuan
-              </button>
-              <button 
-                onClick={() => handlePolicyClick('Sitemap')}
+              </Link>
+              <Link 
+                to="/sitemap"
                 className="hover:text-blue-400 transition-colors"
               >
                 Sitemap
-              </button>
+              </Link>
             </div>
           </div>
         </div>
