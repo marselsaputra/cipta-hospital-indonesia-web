@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -24,7 +23,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <img src="/public/icon.png" alt="Logo" className="h-10 w-10" />
+            <img src="/icon.png" alt="Logo" className="h-10 w-10" />
             <div className="hidden sm:block">
               <span className="text-xl font-bold text-gray-900">Cipta Hospital</span>
               <p className="text-xs text-gray-600">Indonesia</p>

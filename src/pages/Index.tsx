@@ -1,4 +1,3 @@
-
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -59,19 +58,19 @@ const Index = () => {
     {
       name: 'Ibu Sari Dewi',
       role: 'Pasien Rawat Jalan',
-      image: '/public/image.png',
+      image: '/image.png',
       comment: 'Pelayanan yang sangat memuaskan. Dokter dan perawat sangat ramah dan profesional. Fasilitas rumah sakit juga sangat bersih dan modern.'
     },
     {
       name: 'Bapak Ahmad Santoso',
       role: 'Keluarga Pasien',
-      image: '/public/image.png',
+      image: '/image.png',
       comment: 'Terima kasih atas perawatan terbaik untuk ayah saya. Tim medis sangat kompeten dan memberikan penjelasan yang detail tentang kondisi pasien.'
     },
     {
       name: 'Ibu Maya Putri',
       role: 'Pasien Rawat Inap',
-      image: '/public/image.png',
+      image: '/image.png',
       comment: 'Pengalaman rawat inap yang nyaman. Kamar bersih, makanan bergizi, dan perawat yang selalu siap membantu 24 jam.'
     }
   ];
