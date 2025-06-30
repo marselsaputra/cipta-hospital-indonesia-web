@@ -1,70 +1,145 @@
 
-import { Heart, Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Heart, Phone, Mail, MapPin, Clock, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 const Footer = () => {
+  const socialLinks = [
+    { name: 'Facebook', icon: Facebook, href: '#' },
+    { name: 'Instagram', icon: Instagram, href: '#' },
+    { name: 'Twitter', icon: Twitter, href: '#' },
+    { name: 'Youtube', icon: Youtube, href: '#' }
+  ];
+
+  const quickLinks = [
+    { name: 'Beranda', href: '/' },
+    { name: 'Layanan', href: '/layanan' },
+    { name: 'Kontak', href: '/kontak' },
+    { name: 'Karir', href: '#' },
+    { name: 'Berita', href: '#' }
+  ];
+
+  const services = [
+    'Instalasi Gawat Darurat',
+    'Poliklinik Spesialis',
+    'Rawat Inap',
+    'Laboratorium',
+    'Radiologi',
+    'Fisioterapi'
+  ];
+
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="bg-gray-900 text-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1466721591366-2d5fba72006d?q=80&w=4221&auto=format&fit=crop')] bg-cover bg-center opacity-5"></div>
+      <div className="relative container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="p-2 bg-blue-600 rounded-lg">
-                <Heart className="h-6 w-6 text-white" />
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="p-3 bg-blue-600 rounded-xl shadow-lg">
+                <Heart className="h-8 w-8 text-white" />
               </div>
               <div>
-                <span className="text-xl font-bold">PT. Cipta Hospital Indonesia</span>
+                <span className="text-2xl font-bold">PT. Cipta Hospital Indonesia</span>
+                <Badge className="ml-2 bg-green-500 text-white">Akreditasi A</Badge>
               </div>
             </div>
-            <p className="text-gray-300 mb-4 max-w-md">
+            <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
               Rumah sakit terpercaya yang berkomitmen memberikan pelayanan kesehatan 
-              terbaik dengan fasilitas modern dan tim medis berpengalaman.
+              terbaik dengan fasilitas modern dan tim medis berpengalaman selama lebih dari 15 tahun.
             </p>
-            <div className="flex items-center space-x-2 text-sm text-gray-300">
-              <Clock className="h-4 w-4" />
-              <span>IGD Buka 24 Jam</span>
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="p-2 bg-green-600 rounded-lg">
+                <Clock className="h-5 w-5 text-white" />
+              </div>
+              <div>
+                <span className="font-semibold text-green-400">IGD Buka 24 Jam</span>
+                <p className="text-sm text-gray-400">Layanan darurat siap membantu</p>
+              </div>
+            </div>
+            
+            {/* Social Media */}
+            <div className="flex space-x-4 mt-6">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  className="p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors"
+                  aria-label={social.name}
+                >
+                  <social.icon className="h-5 w-5" />
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Kontak</h3>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-blue-400" />
-                <span className="text-sm text-gray-300">+62 21 1234 5678</span>
+            <h3 className="text-lg font-semibold mb-6 text-blue-400">Hubungi Kami</h3>
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <Phone className="h-5 w-5 text-blue-400 mt-1" />
+                <div>
+                  <p className="text-sm text-gray-300">Telepon</p>
+                  <p className="font-medium">+62 21 1234 5678</p>
+                  <p className="text-sm text-gray-400">+62 21 8765 4321</p>
+                </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4 text-blue-400" />
-                <span className="text-sm text-gray-300">info@ciptahospital.co.id</span>
+              <div className="flex items-start space-x-3">
+                <Mail className="h-5 w-5 text-blue-400 mt-1" />
+                <div>
+                  <p className="text-sm text-gray-300">Email</p>
+                  <p className="font-medium">info@ciptahospital.co.id</p>
+                  <p className="text-sm text-gray-400">cs@ciptahospital.co.id</p>
+                </div>
               </div>
-              <div className="flex items-start space-x-2">
-                <MapPin className="h-4 w-4 text-blue-400 mt-1" />
-                <span className="text-sm text-gray-300">
-                  Jl. Kesehatan Raya No. 123<br />
-                  Jakarta Selatan, DKI Jakarta
-                </span>
+              <div className="flex items-start space-x-3">
+                <MapPin className="h-5 w-5 text-blue-400 mt-1" />
+                <div>
+                  <p className="text-sm text-gray-300">Alamat</p>
+                  <p className="font-medium">Jl. Kesehatan Raya No. 123</p>
+                  <p className="text-sm text-gray-400">Jakarta Selatan, DKI Jakarta</p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links & Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Layanan Utama</h3>
-            <ul className="space-y-2 text-sm text-gray-300">
-              <li>Instalasi Gawat Darurat</li>
-              <li>Poliklinik Spesialis</li>
-              <li>Rawat Inap</li>
-              <li>Laboratorium</li>
-              <li>Radiologi</li>
+            <h3 className="text-lg font-semibold mb-6 text-blue-400">Layanan Utama</h3>
+            <ul className="space-y-2 text-sm">
+              {services.map((service, index) => (
+                <li key={index}>
+                  <a href="/layanan" className="text-gray-300 hover:text-blue-400 transition-colors">
+                    {service}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            
+            <h3 className="text-lg font-semibold mb-4 mt-8 text-blue-400">Menu</h3>
+            <ul className="space-y-2 text-sm">
+              {quickLinks.map((link, index) => (
+                <li key={index}>
+                  <a href={link.href} className="text-gray-300 hover:text-blue-400 transition-colors">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p className="text-sm text-gray-400">
-            © 2024 PT. Cipta Hospital Indonesia. Semua hak cipta dilindungi.
-          </p>
+        <div className="border-t border-gray-800 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-sm text-gray-400 mb-4 md:mb-0">
+              © 2024 PT. Cipta Hospital Indonesia. Semua hak cipta dilindungi.
+            </p>
+            <div className="flex items-center space-x-6 text-sm text-gray-400">
+              <a href="#" className="hover:text-blue-400 transition-colors">Kebijakan Privasi</a>
+              <a href="#" className="hover:text-blue-400 transition-colors">Syarat & Ketentuan</a>
+              <a href="#" className="hover:text-blue-400 transition-colors">Sitemap</a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
