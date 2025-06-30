@@ -11,6 +11,8 @@ const Navbar = () => {
   const navigation = [
     { name: 'Beranda', href: '/' },
     { name: 'Layanan', href: '/layanan' },
+    { name: 'Karir', href: '/karir' },
+    { name: 'Berita', href: '/berita' },
     { name: 'Kontak', href: '/kontak' },
   ];
 

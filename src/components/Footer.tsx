@@ -2,6 +2,7 @@
 import { Heart, Phone, Mail, MapPin, Clock, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router-dom';
+import CustomAlert from './CustomAlert';
 
 const Footer = () => {
   const socialLinks = [
@@ -14,9 +15,9 @@ const Footer = () => {
   const quickLinks = [
     { name: 'Beranda', href: '/' },
     { name: 'Layanan', href: '/layanan' },
-    { name: 'Kontak', href: '/kontak' },
     { name: 'Karir', href: '/karir' },
-    { name: 'Berita', href: '/berita' }
+    { name: 'Berita', href: '/berita' },
+    { name: 'Kontak', href: '/kontak' }
   ];
 
   const services = [
