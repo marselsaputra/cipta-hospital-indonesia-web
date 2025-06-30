@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Heart, Users, Stethoscope, Activity, Microscope, Scan, Clock, Star, ArrowRight, CheckCircle } from 'lucide-react';
+import { Heart, Users, Stethoscope, Activity, Microscope, Scan, Clock, Star, ArrowRight, CheckCircle, Phone, MessageCircle } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -66,6 +66,10 @@ const Layanan = () => {
     }
   };
 
+  const handleServiceClick = (serviceName: string) => {
+    alert(`Informasi detail tentang ${serviceName} akan segera tersedia. Hubungi customer service kami untuk informasi lebih lanjut.`);
+  };
+
   const facilities = [
     {
       name: 'Ruang Operasi Modern',
@@ -86,8 +90,8 @@ const Layanan = () => {
 
   const specialFeatures = [
     { icon: Clock, title: 'Layanan 24/7', description: 'IGD dan layanan darurat tersedia 24 jam setiap hari' },
-    { icon: Star, title: 'Akreditasi A', description: 'Tersertifikasi dengan standar pelayanan internasional' },
-    { icon: CheckCircle, title: 'ISO Certified', description: 'Memenuhi standar kualitas ISO untuk rumah sakit' },
+    { icon: Star, title: 'Standar Internasional', description: 'Tersertifikasi dengan standar pelayanan internasional' },
+    { icon: CheckCircle, title: 'Tim Berpengalaman', description: 'Didukung oleh tim medis profesional dan berpengalaman' },
   ];
 
   return (
@@ -167,7 +171,7 @@ const Layanan = () => {
             {filteredServices.map((service) => {
               const IconComponent = getCategoryIcon(service.category);
               return (
-                <Card key={service.id} className="hover:shadow-lg transition-all duration-300 h-full border-0 shadow-md group">
+                <Card key={service.id} className="hover:shadow-lg transition-all duration-300 h-full border-0 shadow-md group cursor-pointer" onClick={() => handleServiceClick(service.name)}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
@@ -277,12 +281,14 @@ const Layanan = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-white text-blue-700 hover:bg-blue-50 font-semibold">
                 <a href="tel:+622112345678">
-                  📞 Hubungi: +62 21 1234 5678
+                  <Phone className="mr-2 h-5 w-5" />
+                  Hubungi: +62 21 1234 5678
                 </a>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-blue-700 font-semibold bg-transparent">
                 <a href="/kontak">
-                  💬 Kirim Pesan
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  Kirim Pesan
                 </a>
               </Button>
             </div>

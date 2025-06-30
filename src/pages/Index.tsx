@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Heart, Users, Award, Clock, Phone, MapPin, Mail, Star, Stethoscope, Activity, CheckCircle, ArrowRight } from 'lucide-react';
+import { Heart, Users, Award, Clock, Phone, MapPin, Mail, Star, Stethoscope, Activity, CheckCircle, ArrowRight, Shield, Zap, Globe } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -130,6 +130,10 @@ const Index = () => {
     }
   ];
 
+  const handleLearnMore = () => {
+    alert('Informasi lengkap tentang PT. Cipta Hospital Indonesia:\n\n✓ Rumah sakit dengan pengalaman 15+ tahun\n✓ Tim medis profesional dan bersertifikat\n✓ Fasilitas modern dan teknologi terdepan\n✓ Pelayanan 24/7 untuk kasus darurat\n\nHubungi kami di +62 21 1234 5678 untuk informasi lebih detail.');
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -244,21 +248,21 @@ const Index = () => {
                   <span className="text-gray-700">Tim medis bersertifikat internasional</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-gray-700">Peralatan medis berstandar internasional</span>
+                  <Shield className="h-5 w-5 text-green-500" />
+                  <span className="text-gray-700">Standar keamanan dan sterilisasi tinggi</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-gray-700">Pelayanan 24/7 untuk kasus darurat</span>
+                  <Zap className="h-5 w-5 text-green-500" />
+                  <span className="text-gray-700">Teknologi medis terdepan dan modern</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-gray-700">Sistem terintegrasi untuk kemudahan pasien</span>
+                  <Globe className="h-5 w-5 text-green-500" />
+                  <span className="text-gray-700">Jaringan kerjasama dengan RS internasional</span>
                 </div>
               </div>
-              <Button className="mt-8 bg-blue-600 hover:bg-blue-700 text-white font-semibold" size="lg">
-                <ArrowRight className="ml-2 h-5 w-5" />
+              <Button onClick={handleLearnMore} className="mt-8 bg-blue-600 hover:bg-blue-700 text-white font-semibold" size="lg">
                 Pelajari Lebih Lanjut
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
             <div className="relative">
@@ -275,8 +279,8 @@ const Index = () => {
                     <Activity className="h-6 w-6 text-green-600" />
                   </div>
                   <div>
-                    <div className="font-bold text-gray-900">Akreditasi A</div>
-                    <div className="text-sm text-gray-600">Kementerian Kesehatan RI</div>
+                    <div className="font-bold text-gray-900">Standar Internasional</div>
+                    <div className="text-sm text-gray-600">Sertifikat ISO & JCI Ready</div>
                   </div>
                 </div>
               </div>
