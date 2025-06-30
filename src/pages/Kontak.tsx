@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -113,7 +112,7 @@ const Kontak = () => {
     {
       icon: MapPin,
       title: 'Alamat Lengkap',
-      details: ['Jl. Kesehatan Raya No. 123', 'Kebayoran Baru, Jakarta Selatan', 'DKI Jakarta 12345'],
+      details: ['Universitas Pamulang (UNPAM) Viktor', 'Jl. Surya Kencana No.1, Pamulang Bar.', 'Kota Tangerang Selatan 15417'],
       description: 'Lokasi rumah sakit kami',
       color: 'bg-purple-100 text-purple-600'
     },
@@ -139,7 +138,7 @@ const Kontak = () => {
       
       {/* Header Section */}
       <section className="bg-gradient-to-r from-blue-600 to-teal-600 text-white py-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=2834&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+        <div className="absolute inset-0 bg-[url('/hero-kontak.png')] bg-cover bg-center opacity-10"></div>
         <div className="relative container mx-auto px-4">
           <div className="text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30">
@@ -326,9 +325,11 @@ const Kontak = () => {
                     <div className="text-center">
                       <MapPin className="h-12 w-12 text-blue-600 mx-auto mb-2" />
                       <p className="text-gray-600 font-medium">Peta Lokasi</p>
-                      <p className="text-sm text-gray-500">Jl. Kesehatan Raya No. 123</p>
-                      <Button variant="outline" className="mt-3 text-blue-600 border-blue-200 hover:bg-blue-50">
-                        Buka di Google Maps
+                      <p className="text-sm text-gray-500">Universitas Pamulang (UNPAM) Viktor</p>
+                      <Button asChild variant="outline" className="mt-3 text-blue-600 border-blue-200 hover:bg-blue-50">
+                        <a href="https://maps.app.goo.gl/gwU9YSZPCzVA59zo6" target="_blank" rel="noopener noreferrer">
+                          Buka di Google Maps
+                        </a>
                       </Button>
                     </div>
                   </div>
@@ -341,7 +342,7 @@ const Kontak = () => {
 
       {/* Emergency Section */}
       <section className="py-16 bg-gradient-to-r from-red-500 to-red-600 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1493962853295-0fd70327578a?q=80&w=6000&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+        <div className="absolute inset-0 bg-[url('/emergency-bg.png')] bg-cover bg-center opacity-10"></div>
         <div className="relative container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center justify-center p-4 bg-white/20 backdrop-blur-sm rounded-full mb-6">

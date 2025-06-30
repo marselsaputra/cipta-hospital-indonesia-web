@@ -1,9 +1,11 @@
-
 import { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Heart, Users, Stethoscope, Activity, Microscope, Scan, Clock, Star, ArrowRight, CheckCircle, Phone, MessageCircle } from 'lucide-react';
+import { 
+  Heart, Users, Stethoscope, Activity, Microscope, Scan, Clock, Star, 
+  ArrowRight, CheckCircle, Phone, MessageCircle, Search
+} from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -16,6 +18,72 @@ interface Service {
 }
 
 const Layanan = () => {
+  const mockServices: Service[] = [
+    {
+      id: 1,
+      name: 'Instalasi Gawat Darurat',
+      description: 'Layanan darurat 24/7 dengan tim medis yang siap siaga menangani keadaan medis darurat.',
+      category: 'Darurat',
+      available: true
+    },
+    {
+      id: 2,
+      name: 'Rawat Inap VIP',
+      description: 'Kamar VIP dengan fasilitas lengkap untuk kenyamanan pasien selama rawat inap.',
+      category: 'Rawat Inap',
+      available: true
+    },
+    {
+      id: 3,
+      name: 'Poliklinik Umum',
+      description: 'Layanan konsultasi kesehatan umum dengan dokter berpengalaman.',
+      category: 'Poliklinik',
+      available: true
+    },
+    {
+      id: 4,
+      name: 'Dokter Spesialis Jantung',
+      description: 'Konsultasi dengan spesialis jantung untuk kesehatan kardiovaskular Anda.',
+      category: 'Spesialis',
+      available: true
+    },
+    {
+      id: 5,
+      name: 'Laboratorium Klinik',
+      description: 'Fasilitas laboratorium lengkap dengan peralatan modern dan hasil akurat.',
+      category: 'Penunjang',
+      available: true
+    },
+    {
+      id: 6,
+      name: 'Radiologi & MRI',
+      description: 'Layanan pemeriksaan radiologi dengan teknologi terkini untuk diagnosa tepat.',
+      category: 'Penunjang',
+      available: true
+    },
+    {
+      id: 7,
+      name: 'Spesialis Anak',
+      description: 'Dokter spesialis anak untuk menjaga kesehatan dan pertumbuhan anak Anda.',
+      category: 'Spesialis',
+      available: true
+    },
+    {
+      id: 8,
+      name: 'Medical Check Up',
+      description: 'Paket pemeriksaan kesehatan menyeluruh untuk deteksi dini penyakit.',
+      category: 'Poliklinik',
+      available: true
+    },
+    {
+      id: 9,
+      name: 'Rawat Inap Kelas 1',
+      description: 'Kamar nyaman dengan fasilitas lengkap dan perawatan 24 jam.',
+      category: 'Rawat Inap',
+      available: false
+    }
+  ];
+
   const [services, setServices] = useState<Service[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('Semua');
 
@@ -23,6 +91,11 @@ const Layanan = () => {
     const savedServices = localStorage.getItem('hospital-services');
     if (savedServices) {
       setServices(JSON.parse(savedServices));
+    } else {
+      // Use mockup data if no services found in localStorage
+      setServices(mockServices);
+      // Save mockup data to localStorage
+      localStorage.setItem('hospital-services', JSON.stringify(mockServices));
     }
   }, []);
 
@@ -73,17 +146,17 @@ const Layanan = () => {
   const facilities = [
     {
       name: 'Ruang Operasi Modern',
-      image: 'https://images.unsplash.com/photo-1493962853295-0fd70327578a?q=80&w=6000&auto=format&fit=crop',
+      image: '/fasilitas1.png',
       description: 'Ruang operasi dengan teknologi canggih dan standar sterilisasi tinggi'
     },
     {
       name: 'ICU & NICU',
-      image: 'https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=2834&auto=format&fit=crop',
+      image: '/fasilitas2.png',
       description: 'Unit perawatan intensif dengan monitoring 24 jam'
     },
     {
       name: 'Laboratorium Canggih',
-      image: 'https://images.unsplash.com/photo-1493397212122-2b85dda8106b?q=80&w=3857&auto=format&fit=crop',
+      image: '/fasilitas3.png',
       description: 'Laboratorium dengan peralatan otomatis dan hasil akurat'
     }
   ];
@@ -100,7 +173,7 @@ const Layanan = () => {
       
       {/* Header Section */}
       <section className="bg-gradient-to-r from-blue-600 to-teal-600 text-white py-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1466721591366-2d5fba72006d?q=80&w=4221&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+        <div className="absolute inset-0 bg-[url('/hero-layanan.png')] bg-cover bg-center opacity-10"></div>
         <div className="relative container mx-auto px-4">
           <div className="text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30">
@@ -122,7 +195,7 @@ const Layanan = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             {specialFeatures.map((feature, index) => (
-              <div key={index} className="flex items-center gap-4 bg-white p-6 rounded-xl shadow-md">
+              <div key={index} className="flex items-center gap-4 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all hover:translate-y-[-5px]">
                 <div className="p-3 bg-blue-100 rounded-full">
                   <feature.icon className="h-6 w-6 text-blue-600" />
                 </div>
@@ -149,7 +222,7 @@ const Layanan = () => {
           </div>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap gap-2 mb-8 justify-center">
+          <div className="flex flex-wrap gap-3 mb-10 justify-center">
             {categories.map((category) => (
               <Badge
                 key={category}
@@ -171,7 +244,10 @@ const Layanan = () => {
             {filteredServices.map((service) => {
               const IconComponent = getCategoryIcon(service.category);
               return (
-                <Card key={service.id} className="hover:shadow-lg transition-all duration-300 h-full border-0 shadow-md group cursor-pointer" onClick={() => handleServiceClick(service.name)}>
+                <Card key={service.id} 
+                  className="hover:shadow-xl transition-all duration-300 h-full border-0 shadow-md group cursor-pointer hover:translate-y-[-5px]" 
+                  onClick={() => handleServiceClick(service.name)}
+                >
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
@@ -202,7 +278,7 @@ const Layanan = () => {
                           {service.available ? 'Tersedia' : 'Tidak Tersedia'}
                         </span>
                       </div>
-                      <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50">
+                      <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 group-hover:translate-x-1 transition-all">
                         <ArrowRight className="h-4 w-4" />
                       </Button>
                     </div>
@@ -213,17 +289,21 @@ const Layanan = () => {
           </div>
 
           {filteredServices.length === 0 && (
-            <div className="text-center py-16">
-              <div className="max-w-md mx-auto">
-                <div className="text-6xl mb-4">🏥</div>
-                <p className="text-gray-500 text-lg">
+            <div className="text-center py-16 bg-gray-50 rounded-2xl shadow-inner">
+              <div className="max-w-md mx-auto p-8">
+                <div className="bg-blue-100 p-6 rounded-full w-24 h-24 mx-auto mb-6 flex items-center justify-center">
+                  <Search className="h-10 w-10 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Tidak Ada Layanan Ditemukan</h3>
+                <p className="text-gray-500 text-lg mb-6">
                   Tidak ada layanan yang ditemukan untuk kategori "{selectedCategory}".
                 </p>
                 <Button 
-                  className="mt-4 bg-blue-600 hover:bg-blue-700 text-white"
+                  className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 mx-auto"
                   onClick={() => setSelectedCategory('Semua')}
                 >
-                  Lihat Semua Layanan
+                  <ArrowRight className="h-4 w-4" />
+                  <span>Lihat Semua Layanan</span>
                 </Button>
               </div>
             </div>
@@ -235,6 +315,9 @@ const Layanan = () => {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
+            <Badge className="mb-4 bg-blue-100 text-blue-800 border-blue-200">
+              🏥 Fasilitas Modern
+            </Badge>
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               Fasilitas Unggulan
             </h2>
@@ -245,7 +328,7 @@ const Layanan = () => {
           
           <div className="grid md:grid-cols-3 gap-8">
             {facilities.map((facility, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow border-0 shadow-md">
+              <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-md hover:translate-y-[-5px]">
                 <div className="h-48 overflow-hidden">
                   <img 
                     src={facility.image} 
@@ -271,6 +354,9 @@ const Layanan = () => {
       <section className="py-16 bg-gradient-to-r from-blue-600 to-teal-600 text-white">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
+            <Badge className="mb-4 bg-white/20 text-white border-white/30">
+              💬 Butuh Bantuan?
+            </Badge>
             <h2 className="text-3xl font-bold mb-4">
               Butuh Informasi Lebih Lanjut?
             </h2>

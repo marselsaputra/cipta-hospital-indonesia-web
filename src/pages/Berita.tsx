@@ -1,12 +1,13 @@
-
 import { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Calendar, Clock, User, ArrowRight, Search } from 'lucide-react';
+import { Calendar, Clock, User, ArrowRight, Search, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 interface News {
   id: number;
@@ -24,18 +25,23 @@ const Berita = () => {
   const [news, setNews] = useState<News[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('Semua');
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const [selectedNews, setSelectedNews] = useState<News | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   useEffect(() => {
+    // Force reset berita data by clearing localStorage first
+    localStorage.removeItem('hospital-news');
+    
     // Inisialisasi data berita jika belum ada
     const savedNews = localStorage.getItem('hospital-news');
     if (!savedNews) {
       const initialNews = [
         {
           id: 1,
-          title: 'PT. Cipta Hospital Indonesia Raih Sertifikasi Akreditasi Nasional',
-          excerpt: 'Rumah sakit kami berhasil meraih sertifikasi akreditasi nasional dengan nilai tertinggi.',
-          content: 'PT. Cipta Hospital Indonesia dengan bangga mengumumkan pencapaian sertifikasi akreditasi nasional dengan nilai tertinggi. Pencapaian ini merupakan bukti komitmen kami dalam memberikan pelayanan kesehatan berkualitas tinggi kepada masyarakat Indonesia.',
-          image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=4631&auto=format&fit=crop',
+          title: 'PT. Cipta Hospital Indonesia Raih Akreditasi Joint Commission International',
+          excerpt: 'Rumah sakit kami berhasil meraih sertifikasi akreditasi internasional yang bergengsi.',
+          content: 'Jakarta, 2025 - PT. Cipta Hospital Indonesia dengan bangga mengumumkan pencapaian sertifikasi akreditasi Joint Commission International (JCI), standar gold dalam akreditasi layanan kesehatan global. Pencapaian ini menjadikan Cipta Hospital sebagai salah satu rumah sakit terbaik di Indonesia dengan standar internasional. Menteri Kesehatan RI turut menghadiri sertifikasi yang diselenggarakan di Jakarta dan menyampaikan apresiasi atas komitmen rumah sakit dalam meningkatkan kualitas layanan kesehatan di Indonesia.',
+          image: '/berita1.png',
           author: 'Tim Redaksi',
           date: '2025-06-25',
           category: 'Prestasi',
@@ -43,10 +49,10 @@ const Berita = () => {
         },
         {
           id: 2,
-          title: 'Peluncuran Layanan Telemedicine untuk Kemudahan Pasien',
-          excerpt: 'Inovasi baru layanan konsultasi online untuk memudahkan akses kesehatan masyarakat.',
-          content: 'Dalam upaya meningkatkan aksesibilitas layanan kesehatan, PT. Cipta Hospital Indonesia meluncurkan layanan telemedicine. Layanan ini memungkinkan pasien untuk berkonsultasi dengan dokter spesialis tanpa harus datang langsung ke rumah sakit.',
-          image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=4470&auto=format&fit=crop',
+          title: 'Cipta Hospital Luncurkan Aplikasi Telemedicine dengan Fitur AI Diagnosis',
+          excerpt: 'Inovasi terbaru untuk memudahkan akses layanan kesehatan di seluruh Indonesia.',
+          content: 'Jakarta, 2025 - Dalam upaya meningkatkan aksesibilitas layanan kesehatan, PT. Cipta Hospital Indonesia meluncurkan aplikasi telemedicine "Cipta Sehat" yang dilengkapi teknologi kecerdasan buatan (AI) untuk pre-diagnosis. Layanan ini memungkinkan pasien di seluruh pelosok Indonesia untuk berkonsultasi dengan dokter spesialis tanpa harus datang langsung ke rumah sakit. Peluncuran aplikasi ini didukung oleh Kementerian Kesehatan dan Kementerian Komunikasi dan Informatika sebagai bagian dari program Indonesia Sehat Digital 2025.',
+          image: '/berita2.png',
           author: 'Dr. Sarah Wijaya',
           date: '2025-06-20',
           category: 'Layanan',
@@ -54,10 +60,10 @@ const Berita = () => {
         },
         {
           id: 3,
-          title: 'Program Vaksinasi COVID-19 Booster Gratis untuk Lansia',
-          excerpt: 'Kegiatan bakti sosial memberikan vaksinasi booster gratis untuk para lansia di Jakarta.',
-          content: 'PT. Cipta Hospital Indonesia menggelar program vaksinasi COVID-19 booster gratis khusus untuk lansia di wilayah Jakarta. Program ini merupakan bentuk kepedulian kami terhadap kesehatan masyarakat, khususnya kelompok rentan.',
-          image: 'https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=4470&auto=format&fit=crop',
+          title: 'Program Vaksinasi Terpadu untuk Daerah 3T Indonesia',
+          excerpt: 'Bakti sosial kesehatan untuk daerah tertinggal, terdepan, dan terluar Indonesia.',
+          content: 'Maluku, 2025 - PT. Cipta Hospital Indonesia bekerjasama dengan Kementerian Kesehatan RI menggelar program vaksinasi terpadu di daerah 3T (tertinggal, terdepan, dan terluar) Indonesia. Program ini menjangkau pulau-pulau terpencil di Maluku, Papua, dan Nusa Tenggara Timur. Total lebih dari 50.000 dosis vaksin telah diberikan, meliputi vaksin COVID-19 varian terbaru, influenza, dan vaksin dasar untuk anak-anak. Tim dokter relawan dari seluruh Indonesia bergabung dalam program bakti sosial ini.',
+          image: '/berita3.png',
           author: 'Dr. Ahmad Santoso',
           date: '2025-06-15',
           category: 'Kesehatan Masyarakat',
@@ -65,21 +71,21 @@ const Berita = () => {
         },
         {
           id: 4,
-          title: 'Penambahan Peralatan CT Scan Terbaru dengan Teknologi AI',
-          excerpt: 'Investasi besar untuk peralatan medis canggih demi diagnosis yang lebih akurat.',
-          content: 'Rumah sakit kami menambah investasi peralatan medis dengan menghadirkan CT Scan terbaru yang dilengkapi teknologi artificial intelligence. Peralatan ini akan meningkatkan akurasi diagnosis dan mempercepat pelayanan radiologi.',
-          image: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?q=80&w=4631&auto=format&fit=crop',
-          author: 'Tim Radiologi',
+          title: 'Cipta Hospital Indonesia Hadirkan Robot Bedah Canggih Pertama di Asia Tenggara',
+          excerpt: 'Investasi teknologi medis tercanggih untuk peningkatan kualitas layanan bedah presisi tinggi.',
+          content: 'Jakarta, 2025 - Cipta Hospital Indonesia kembali mengukuhkan posisinya sebagai rumah sakit terdepan di Indonesia dengan menghadirkan robot bedah Da Vinci XI, sistem bedah robotik tercanggih yang pertama di Asia Tenggara. Peralatan ini dilengkapi teknologi artificial intelligence untuk membantu dokter melakukan operasi dengan presisi tinggi. Peresmian teknologi ini dihadiri oleh Presiden RI dan menandai era baru dalam dunia kesehatan Indonesia yang semakin maju dan kompetitif di tingkat global.',
+          image: '/berita4.png',
+          author: 'Tim Redaksi',
           date: '2025-06-10',
           category: 'Teknologi',
           readTime: '6 menit'
         },
         {
           id: 5,
-          title: 'Seminar Kesehatan: Pencegahan Penyakit Jantung di Era Modern',
-          excerpt: 'Acara edukasi kesehatan untuk masyarakat umum tentang pencegahan penyakit jantung.',
-          content: 'PT. Cipta Hospital Indonesia mengadakan seminar kesehatan dengan tema "Pencegahan Penyakit Jantung di Era Modern". Acara ini dihadiri oleh lebih dari 200 peserta dan menghadirkan para ahli kardiologi terkemuka.',
-          image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=4631&auto=format&fit=crop',
+          title: 'Seminar Nasional: Penanggulangan Penyakit Tropis di Era Perubahan Iklim',
+          excerpt: 'Acara edukasi kesehatan bersama pakar penyakit tropis dari seluruh Indonesia.',
+          content: 'Bandung, 2025 - PT. Cipta Hospital Indonesia bekerjasama dengan Institut Teknologi Bandung (ITB) mengadakan seminar nasional dengan tema "Penanggulangan Penyakit Tropis di Era Perubahan Iklim". Acara yang diselenggarakan di Bandung ini dihadiri oleh lebih dari 500 peserta dari berbagai institusi kesehatan dan universitas di seluruh Indonesia. Para pembicara meliputi pakar epidemiologi, dokter spesialis penyakit tropis, dan peneliti perubahan iklim yang membahas strategi komprehensif menghadapi peningkatan kasus penyakit tropis akibat perubahan iklim global.',
+          image: '/berita5.png',
           author: 'Dr. Maria Sari',
           date: '2025-06-05',
           category: 'Edukasi',
@@ -87,10 +93,10 @@ const Berita = () => {
         },
         {
           id: 6,
-          title: 'Kerjasama dengan Universitas untuk Program Magang Mahasiswa Kedokteran',
-          excerpt: 'Membuka kesempatan magang bagi mahasiswa kedokteran untuk pengalaman praktis.',
-          content: 'Rumah sakit kami menjalin kerjasama dengan beberapa universitas terkemuka untuk program magang mahasiswa kedokteran. Program ini bertujuan memberikan pengalaman praktis kepada calon tenaga medis masa depan.',
-          image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=4470&auto=format&fit=crop',
+          title: 'Cipta Hospital Luncurkan Program Beasiswa Dokter Spesialis untuk Mahasiswa Berprestasi',
+          excerpt: 'Kesempatan beasiswa pendidikan dan magang bagi mahasiswa kedokteran terbaik Indonesia.',
+          content: 'Yogyakarta, 2025 - Cipta Hospital Indonesia bekerjasama dengan Fakultas Kedokteran Universitas Gadjah Mada (UGM) meluncurkan program beasiswa dokter spesialis untuk 50 mahasiswa kedokteran berprestasi dari seluruh Indonesia. Program ini mencakup pembiayaan pendidikan spesialis penuh dan jaminan penempatan kerja di jaringan Cipta Hospital. Peluncuran program ini merupakan bagian dari komitmen Cipta Hospital untuk meningkatkan kualitas dan pemerataan tenaga medis spesialis di Indonesia, terutama untuk daerah yang masih kekurangan dokter spesialis.',
+          image: '/berita6.png',
           author: 'Tim Pendidikan',
           date: '2025-05-30',
           category: 'Pendidikan',
@@ -133,16 +139,67 @@ const Berita = () => {
   };
 
   const handleNewsClick = (newsItem: News) => {
-    alert(`Artikel: ${newsItem.title}\n\n${newsItem.content}\n\nPenulis: ${newsItem.author}\nTanggal: ${new Date(newsItem.date).toLocaleDateString('id-ID')}`);
+    setSelectedNews(newsItem);
+    setDialogOpen(true);
   };
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       
+      {/* News Detail Dialog */}
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent className="sm:max-w-3xl max-h-[90vh] overflow-y-auto">
+          {selectedNews && (
+            <>
+              <DialogHeader>
+                <div className="flex justify-between items-start mb-2">
+                  <Badge className={getCategoryColor(selectedNews.category)}>
+                    {selectedNews.category}
+                  </Badge>
+                  <Button variant="ghost" size="icon" onClick={() => setDialogOpen(false)} className="h-8 w-8">
+                    <X className="h-4 w-4" />
+                  </Button>
+                </div>
+                <DialogTitle className="text-2xl font-bold">{selectedNews.title}</DialogTitle>
+                <div className="flex items-center gap-4 text-sm text-gray-500 mt-2">
+                  <div className="flex items-center">
+                    <User className="h-4 w-4 mr-1" />
+                    {selectedNews.author}
+                  </div>
+                  <div className="flex items-center">
+                    <Calendar className="h-4 w-4 mr-1" />
+                    {new Date(selectedNews.date).toLocaleDateString('id-ID')}
+                  </div>
+                  <div className="flex items-center">
+                    <Clock className="h-4 w-4 mr-1" />
+                    {selectedNews.readTime}
+                  </div>
+                </div>
+              </DialogHeader>
+              <div className="h-[200px] md:h-[300px] overflow-hidden rounded-lg mb-4">
+                <img 
+                  src={selectedNews.image} 
+                  alt={selectedNews.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <DialogDescription className="text-base text-gray-800 leading-relaxed whitespace-pre-line">
+                {selectedNews.content}
+              </DialogDescription>
+              <Alert className="bg-blue-50 border border-blue-200 mt-4">
+                <AlertDescription className="text-gray-700 leading-relaxed">
+                  Untuk informasi lebih lanjut terkait berita ini, silakan hubungi <span className="font-semibold text-blue-700">humas@ciptahospital.co.id</span> atau kunjungi pusat informasi kami.
+                </AlertDescription>
+              </Alert>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+
       {/* Header Section */}
       <section className="bg-gradient-to-r from-blue-600 to-teal-600 text-white py-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=4470&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+        <div className="absolute inset-0 bg-[url('/hero-berita.png')] bg-cover bg-center opacity-10"></div>
         <div className="relative container mx-auto px-4">
           <div className="text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30">
@@ -296,4 +353,4 @@ const Berita = () => {
   );
 };
 
-export default Berita;
+export default Berita; 

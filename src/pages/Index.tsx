@@ -81,7 +81,7 @@ const Index = () => {
       
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-blue-600 to-teal-600 text-white py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504439904031-93ded9f93e4e?q=80&w=4470&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+        <div className="absolute inset-0 bg-[url('/hero-beranda.png')] bg-cover bg-center opacity-10"></div>
         <div className="relative container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2 text-center lg:text-left">
@@ -119,7 +119,7 @@ const Index = () => {
             <div className="lg:w-1/2">
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=4470&auto=format&fit=crop" 
+                  src="/hospital-building.png" 
                   alt="Rumah Sakit Modern Indonesia"
                   className="rounded-2xl shadow-2xl"
                 />
