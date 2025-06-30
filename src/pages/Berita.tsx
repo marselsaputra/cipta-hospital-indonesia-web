@@ -37,7 +37,7 @@ const Berita = () => {
           content: 'PT. Cipta Hospital Indonesia dengan bangga mengumumkan pencapaian sertifikasi akreditasi nasional dengan nilai tertinggi. Pencapaian ini merupakan bukti komitmen kami dalam memberikan pelayanan kesehatan berkualitas tinggi kepada masyarakat Indonesia.',
           image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=4631&auto=format&fit=crop',
           author: 'Tim Redaksi',
-          date: '2024-06-25',
+          date: '2025-06-25',
           category: 'Prestasi',
           readTime: '3 menit'
         },
@@ -48,7 +48,7 @@ const Berita = () => {
           content: 'Dalam upaya meningkatkan aksesibilitas layanan kesehatan, PT. Cipta Hospital Indonesia meluncurkan layanan telemedicine. Layanan ini memungkinkan pasien untuk berkonsultasi dengan dokter spesialis tanpa harus datang langsung ke rumah sakit.',
           image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=4470&auto=format&fit=crop',
           author: 'Dr. Sarah Wijaya',
-          date: '2024-06-20',
+          date: '2025-06-20',
           category: 'Layanan',
           readTime: '4 menit'
         },
@@ -59,7 +59,7 @@ const Berita = () => {
           content: 'PT. Cipta Hospital Indonesia menggelar program vaksinasi COVID-19 booster gratis khusus untuk lansia di wilayah Jakarta. Program ini merupakan bentuk kepedulian kami terhadap kesehatan masyarakat, khususnya kelompok rentan.',
           image: 'https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=4470&auto=format&fit=crop',
           author: 'Dr. Ahmad Santoso',
-          date: '2024-06-15',
+          date: '2025-06-15',
           category: 'Kesehatan Masyarakat',
           readTime: '5 menit'
         },
@@ -70,7 +70,7 @@ const Berita = () => {
           content: 'Rumah sakit kami menambah investasi peralatan medis dengan menghadirkan CT Scan terbaru yang dilengkapi teknologi artificial intelligence. Peralatan ini akan meningkatkan akurasi diagnosis dan mempercepat pelayanan radiologi.',
           image: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?q=80&w=4631&auto=format&fit=crop',
           author: 'Tim Radiologi',
-          date: '2024-06-10',
+          date: '2025-06-10',
           category: 'Teknologi',
           readTime: '6 menit'
         },
@@ -81,7 +81,7 @@ const Berita = () => {
           content: 'PT. Cipta Hospital Indonesia mengadakan seminar kesehatan dengan tema "Pencegahan Penyakit Jantung di Era Modern". Acara ini dihadiri oleh lebih dari 200 peserta dan menghadirkan para ahli kardiologi terkemuka.',
           image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=4631&auto=format&fit=crop',
           author: 'Dr. Maria Sari',
-          date: '2024-06-05',
+          date: '2025-06-05',
           category: 'Edukasi',
           readTime: '4 menit'
         },
@@ -92,7 +92,7 @@ const Berita = () => {
           content: 'Rumah sakit kami menjalin kerjasama dengan beberapa universitas terkemuka untuk program magang mahasiswa kedokteran. Program ini bertujuan memberikan pengalaman praktis kepada calon tenaga medis masa depan.',
           image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=4470&auto=format&fit=crop',
           author: 'Tim Pendidikan',
-          date: '2024-05-30',
+          date: '2025-05-30',
           category: 'Pendidikan',
           readTime: '3 menit'
         }

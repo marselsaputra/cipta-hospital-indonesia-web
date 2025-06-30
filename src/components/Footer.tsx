@@ -31,15 +31,13 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1466721591366-2d5fba72006d?q=80&w=4221&auto=format&fit=crop')] bg-cover bg-center opacity-5"></div>
+      <div className="absolute inset-0 bg-cover bg-center opacity-5"></div>
       <div className="relative container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="p-3 bg-blue-600 rounded-xl shadow-lg">
-                <Heart className="h-8 w-8 text-white" />
-              </div>
+            <img src="/public/icon.png" alt="Logo" className="h-10 w-10" />
               <div>
                 <span className="text-2xl font-bold">PT. Cipta Hospital Indonesia</span>
                 <Badge className="ml-2 bg-green-500 text-white">Standar Internasional</Badge>
@@ -138,7 +136,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-gray-400 mb-4 md:mb-0">
-              © 2024 PT. Cipta Hospital Indonesia. Semua hak cipta dilindungi.
+              © 2025 PT. Cipta Hospital Indonesia. Semua hak cipta dilindungi.
             </p>
             <div className="flex items-center space-x-6 text-sm text-gray-400">
               <Link 

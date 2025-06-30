@@ -24,9 +24,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="p-2 bg-blue-600 rounded-lg">
-              <Heart className="h-6 w-6 text-white" />
-            </div>
+            <img src="/public/icon.png" alt="Logo" className="h-10 w-10" />
             <div className="hidden sm:block">
               <span className="text-xl font-bold text-gray-900">Cipta Hospital</span>
               <p className="text-xs text-gray-600">Indonesia</p>

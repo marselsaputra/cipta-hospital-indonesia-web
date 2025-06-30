@@ -55,7 +55,7 @@ const SyaratKetentuan = () => {
               <CardHeader>
                 <CardTitle className="text-2xl text-center">Syarat & Ketentuan Penggunaan Layanan</CardTitle>
                 <p className="text-center text-gray-600">PT. Cipta Hospital Indonesia</p>
-                <p className="text-center text-gray-500 text-sm">Berlaku sejak: 1 Januari 2024</p>
+                <p className="text-center text-gray-500 text-sm">Berlaku sejak: 1 Januari 2025</p>
               </CardHeader>
               <CardContent className="prose max-w-none">
                 <div className="space-y-8">

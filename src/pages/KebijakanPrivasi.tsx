@@ -87,7 +87,7 @@ const KebijakanPrivasi = () => {
             <Card className="border-0 shadow-lg">
               <CardHeader>
                 <CardTitle className="text-2xl text-center">Kebijakan Privasi PT. Cipta Hospital Indonesia</CardTitle>
-                <p className="text-center text-gray-600">Terakhir diperbarui: 25 Juni 2024</p>
+                <p className="text-center text-gray-600">Terakhir diperbarui: 25 Juni 2025</p>
               </CardHeader>
               <CardContent className="prose max-w-none">
                 <div className="space-y-8">

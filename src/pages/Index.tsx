@@ -59,19 +59,19 @@ const Index = () => {
     {
       name: 'Ibu Sari Dewi',
       role: 'Pasien Rawat Jalan',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=1887&auto=format&fit=crop',
+      image: '/public/image.png',
       comment: 'Pelayanan yang sangat memuaskan. Dokter dan perawat sangat ramah dan profesional. Fasilitas rumah sakit juga sangat bersih dan modern.'
     },
     {
       name: 'Bapak Ahmad Santoso',
       role: 'Keluarga Pasien',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1770&auto=format&fit=crop',
+      image: '/public/image.png',
       comment: 'Terima kasih atas perawatan terbaik untuk ayah saya. Tim medis sangat kompeten dan memberikan penjelasan yang detail tentang kondisi pasien.'
     },
     {
       name: 'Ibu Maya Putri',
       role: 'Pasien Rawat Inap',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1770&auto=format&fit=crop',
+      image: '/public/image.png',
       comment: 'Pengalaman rawat inap yang nyaman. Kamar bersih, makanan bergizi, dan perawat yang selalu siap membantu 24 jam.'
     }
   ];
